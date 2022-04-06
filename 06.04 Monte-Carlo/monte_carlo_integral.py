@@ -1,57 +1,55 @@
 from random import uniform
-from math import exp, e, pi, sqrt     
+from math import exp  
 import matplotlib.pyplot as plt       
-
 area = 0
-
 #интегрируем e^(-x^2)
-def integral(n):                        #геометрический вариант алгоритма Монте-Карло, n раз сравниваем рандомный y со значением функции 
+
+def integral(n):                    #геометрический вариант алгоритма Монте-Карло, n раз сравниваем рандомный y со значением функции 
     under = 0
     for i in range(n):
         x = uniform(-25, 25)
         y = uniform(0, 1)
         if y <= exp(-x**2):
             under += 1
-    return 50*1*under/n               #(площадь прямоугольника, охватывающего наши x и y) * (отношение точек под графиком ко всем точкам)
+    return 50*1*under/n             #(площадь прямоугольника, охватывающего наши x и y) * (отношение точек под графиком ко всем точкам)
 
-                                            #обычный алгоритм Монте-Карло, используя теорему о среднем и всё такое
-def approx_int(n):                          #изначальный вариант, n иксов выбираются случайно из [-25, 25], функция uniform обеспечивает равномерное распределение
-    sum = 0 
+                                    #обычный алгоритм Монте-Карло, используя теорему о среднем и всё такое
+def approx_int(n):                  #изначальный вариант, n иксов выбираются случайно из [-25, 25], функция uniform обеспечивает равномерное распределение
+    summa = 0 
     for i in range(n):
         x = uniform(-25, 25)
         fx = exp(-(x**2))     
-        sum += fx
-    return sum*50/n                   #(b-a)*sum/n
+        summa += fx
+    return summa*50/n        
 
 
-def approx_int_improved(n):                  #более точный вариант: 500 раз вычисляется интеграл для n иксов, берётся среднее арифметическое
+def approx_int_improved(n):     
     total = 0
     for tries in range(500):
-        sum = 0 
+        summa = 0 
         for i in range(n):
             x = uniform(-25, 25)
             fx = exp(-(x**2))   
-            sum += fx
-        total += sum*50/n
+            summa += fx
+        total += summa*50/n
     return total/500
 
-def approx_int_plot(n, samples):                  #построим график распределения площадей
+def approx_int_plot(n, samples):    #построим график распределения площадей
     total = 0
     areas = []
     for tries in range(samples):
-        sum = 0 
+        summa = 0 
         for i in range(n):
             x = uniform(-25, 25)
             fx = exp(-(x**2))   
-            sum += fx
-        total += sum*50/n
-        areas.append(sum*50/float(n))
+            summa += fx
+        total += summa*50/n
+        areas.append(summa*50/float(n))
     print(total)
     global area 
     area = total/samples
     print(area)
-    return(areas)
-
+    return areas
 
 
 #result0 = geometric_int(10_000)
