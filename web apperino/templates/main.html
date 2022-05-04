@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Determinant Calculator</title>
+    <style>
+      body {background-color: powderblue; margin: auto;}
+      table {
+        margin: auto;
+        border: 1px solid black;
+        table-layout: fixed;
+        width: 50px;
+        height: 50px;
+      }
+
+      th, td {
+        border: 1px solid black;
+        background-color: white;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+      }
+    </style>
+</head>
+
+<body>
+<h3> <center> Determinant Calculator </center> </h3>
+  <form action ="/" method = "POST">
+    <table> 
+      <tr>
+        <td> 
+          <input type="text" name = "a00" size="10px">
+        </td>
+        <td>
+          <input type="text" name = "a01">
+        </td>
+        <td>
+          <input type="text" name = "a02">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name = "a10" size="10px">    
+        </td>
+        <td>
+          <input type="text" name = "a11">
+        </td>
+        <td>
+          <input type="text" name = "a12">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name = "a20" size="10px">
+        </td>
+        <td>
+          <input type="text" name = "a21">
+        </td>
+        <td>
+          <input type="text" name = "a22">
+        </td>
+      </tr>
+    </table>
+    <br>
+    <div style="text-align:center">
+      <button type="submit" value="submit">Enter</button>
+    </div>
+  </form>
+  {%if deter%}
+  <p><center> The Determinant is {{deter}} </center> </p>
+  {%else%}
+  <p><center> The Determinant is 0 </center> </p>
+  {%endif%}
+
+</body>
+</html>
