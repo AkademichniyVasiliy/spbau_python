@@ -4,7 +4,7 @@ import numpy as np
 from scipy.stats import norm, kstest
 import math
 
-data = pd.read_excel('D:\Program Files\Python VS Code\statistics\p4nis_values.xlsx')
+data = pd.read_excel('statistics\penis_size_values.xlsx')
 loc, scale = norm.fit(data)
 n = norm(loc=loc, scale=scale)
 print(n)
