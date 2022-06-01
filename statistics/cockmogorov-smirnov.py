@@ -22,3 +22,4 @@ plt.ylabel("Number of Countries")
 plt.show()
 
 print(kstest(data, n.cdf))
+ 
